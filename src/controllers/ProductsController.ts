@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-
+import { AppError } from "../utils/appError.js";
 class ProductsController {
     /**
      * index - GET para listar varios produtos
@@ -16,6 +16,9 @@ class ProductsController {
     }
     create(req: Request, res: Response) {
         const { name, price } = req.body;
+
+        // throw new Error("Erro ao Criar Produto");
+        // throw new AppError("Erro ao criar produto");
         res.status(201).json({ name, price, user_id: req.user_id });
     }
 }
